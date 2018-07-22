@@ -1,11 +1,11 @@
 'use strict';
 
 class Cloud {
-  constructor (canvasHeight, x, y, z) {
-    this.radius = canvasHeight / 100;
+  constructor (canvasWidth, canvasHeight, z, maxZ) {
+    this.radius = canvasHeight / 100 * z / maxZ;
     this.position = {
-      x: x,
-      y: y,
+      x: canvasWidth + this.radius,
+      y: canvasHeight * 0.3,
       z: z
     };
 
