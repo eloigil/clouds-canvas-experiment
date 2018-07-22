@@ -20,11 +20,19 @@ class Animation {
   _start () {
     this._createFloor();
     this._update();
+    this.renderEngine.render();
   }
 
   _createFloor () {
     this.floor = {
       y: this.horizon
     };
+  }
+
+  _update () {
+    this._createClouds();
+    this.clouds.forEach(cloud => {
+      cloud.update();
+    });
   }
 }
