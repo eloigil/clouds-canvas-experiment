@@ -9,6 +9,8 @@ class Animation {
 
     this.renderEngine = new RenderEngine();
 
+    this.horizon = this.height * 0.6;
+
     this.floor = null;
     this.clouds = [];
 
@@ -18,5 +20,11 @@ class Animation {
   _start () {
     this._createFloor();
     this._update();
+  }
+
+  _createFloor () {
+    this.floor = {
+      y: this.horizon
+    };
   }
 }
