@@ -29,6 +29,10 @@ class Animation {
     };
   }
 
+  _createClouds () {
+    this.clouds.push(new Cloud());
+  }
+
   _update () {
     this._createClouds();
     this.clouds.forEach(cloud => {
