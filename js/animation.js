@@ -7,7 +7,7 @@ class Animation {
     this.width = canvas.width;
     this.height = canvas.height;
 
-    // this.renderEngine = new RenderEngine(this.ctx);
+    this.renderEngine = new RenderEngine(this.ctx, this.width, this.height);
 
     this.horizon = this.height * 0.6;
 
@@ -20,13 +20,15 @@ class Animation {
   _start () {
     this._createFloor();
     this._update();
-    // this.renderEngine.render();
+    this.renderEngine.render();
   }
 
   _createFloor () {
     this.floor = {
       y: this.horizon
     };
+
+    this.renderEngine.floor = this.floor;
   }
 
   _createClouds () {

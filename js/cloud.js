@@ -9,10 +9,11 @@ class Cloud {
       z: z
     };
 
+    this.speed = 5;
     this.animationAngle = 0;
   }
 
   update () {
-
+    this.position.x += this.speed;
   }
 }
