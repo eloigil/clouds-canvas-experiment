@@ -11,4 +11,8 @@ class Cloud {
 
     this.animationAngle = 0;
   }
+
+  update () {
+
+  }
 }
