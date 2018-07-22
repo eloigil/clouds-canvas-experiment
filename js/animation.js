@@ -32,9 +32,10 @@ class Animation {
   _createClouds () {
     // @TODO create 5 clouds for different z levels
     const maxZ = 100;
-    const z = 100;
-
-    this.clouds.push(new Cloud(this.width, this.height, z, maxZ));
+    if (this.clouds.length < 5) {
+      const z = 100;
+      this.clouds.push(new Cloud(this.width, this.height, z, maxZ));
+    }
   }
 
   _update () {
