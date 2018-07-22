@@ -30,7 +30,7 @@ class Animation {
   }
 
   _createClouds () {
-    this.clouds.push(new Cloud());
+    this.clouds.push(new Cloud(this.height));
   }
 
   _update () {
