@@ -15,6 +15,9 @@ class Cloud {
 
   update () {
     this.position.x += this.speed;
+
+    this.position.y += Math.sin(RADIANS(this.animationAngle)) * 2;
+    this.animationAngle += 5;
   }
 
   checkIfEnded () {

@@ -39,7 +39,6 @@ class Animation {
   }
 
   _createClouds () {
-    // @TODO create 5 clouds for different z levels
     for (let ix = 0; ix < 3; ix++) {
       if (this.clouds[ix].length < 10 && this.time % 1000 === 0) {
         const z = 100 - ix * 20;
@@ -63,7 +62,7 @@ class Animation {
     this._createClouds();
     this.clouds.forEach((cloudsLine, line) => {
       cloudsLine.forEach((cloud, index) => {
-        cloud.checkIfEnded() ? this._destroyCloud(line, index) : cloud.update();
+        cloud.checkIfEnded() ? this._destroyCloud(line, index) : cloud.update(); // @ shifting error when destroy cloud
       });
     });
   }
