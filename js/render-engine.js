@@ -1,11 +1,12 @@
 'use strict';
 
 class RenderEngine {
-  constructor (ctx, canvasWidth, canvasHeight, horizon) {
+  constructor (ctx, canvasWidth, canvasHeight, horizon, maxZ) {
     this.ctx = ctx;
     this.width = canvasWidth;
     this.height = canvasHeight;
     this.horizon = horizon;
+    this.maxZ = maxZ;
 
     this.floor = null;
     this.clouds = [];

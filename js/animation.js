@@ -11,19 +11,21 @@ class Animation {
       x: this.width / 2,
       y: this.height * 0.6
     };
+    this.maxZ = 100;
 
     this.floor = null;
     this.clouds = [[]];
 
-    this.renderEngine = new RenderEngine(this.ctx, this.width, this.height, this.horizon);
+    this.renderEngine = new RenderEngine(this.ctx, this.width, this.height, this.horizon, this.maxZ);
 
+    this.intervalTime = 25;
     this.time = 0;
     this._start();
   }
 
   _start () {
     this._createFloor();
-    this._interval = setInterval(() => { this._update(); }, 25);
+    this._interval = setInterval(() => { this._update(); }, this.intervalTime);
     this.renderEngine.render();
   }
 
@@ -38,17 +40,16 @@ class Animation {
 
   _createClouds () {
     // @TODO create 5 clouds for different z levels
-    const maxZ = 100;
     if (this.clouds[0].length < 10 && this.time % 1000 === 0) {
       const z = 100;
-      this.clouds[0].push(new Cloud(this.width, this.height, z, maxZ));
+      this.clouds[0].push(new Cloud(this.width, this.height, z));
       console.log('added clouds');
       this.renderEngine.clouds = this.clouds;
     }
   }
 
   _updateTime () {
-    this.time += 25;
+    this.time += this.intervalTime;
   }
 
   _destroyCloud (line, index) {
