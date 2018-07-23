@@ -39,7 +39,7 @@ class Animation {
   _createClouds () {
     // @TODO create 5 clouds for different z levels
     const maxZ = 100;
-    if (this.clouds[0].length < 5 && this.time % 1000 === 0) {
+    if (this.clouds[0].length < 10 && this.time % 1000 === 0) {
       const z = 100;
       this.clouds[0].push(new Cloud(this.width, this.height, z, maxZ));
       console.log('added clouds');
@@ -49,16 +49,19 @@ class Animation {
 
   _updateTime () {
     this.time += 25;
-    console.log(this.time);
+  }
+
+  _destroyCloud (line, index) {
+    this.clouds[line].splice(index, 1);
   }
 
   _update () {
     this._updateTime();
 
     this._createClouds();
-    this.clouds.forEach(cloudsLine => {
-      cloudsLine.forEach(cloud => {
-        cloud.update();
+    this.clouds.forEach((cloudsLine, line) => {
+      cloudsLine.forEach((cloud, index) => {
+        cloud.checkIfEnded() ? this._destroyCloud(line, index) : cloud.update();
       });
     });
   }
