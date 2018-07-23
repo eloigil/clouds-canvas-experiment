@@ -37,11 +37,16 @@ class RenderEngine {
     }
   }
   _renderCloud (cloud) {
-    console.log(cloud.position);
-    this.ctx.fillStyle = '#fff';
-    this.ctx.globalAlpha = 0.6;
+    this.ctx.save();
     this.ctx.beginPath();
     this.ctx.arc(cloud.position.x, cloud.position.y, cloud.radius, 0, 2 * Math.PI);
+    this.ctx.strokeStyle = '#fff';
+    this.ctx.globalAlpha = 0.8;
+    this.ctx.lineWidth = 2;
+    this.ctx.stroke();
+    this.ctx.fillStyle = '#fff';
+    this.ctx.globalAlpha = 0.4;
     this.ctx.fill();
+    this.ctx.restore();
   }
 }

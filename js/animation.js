@@ -17,12 +17,13 @@ class Animation {
 
     this.renderEngine = new RenderEngine(this.ctx, this.width, this.height, this.horizon);
 
+    this.time = 0;
     this._start();
   }
 
   _start () {
     this._createFloor();
-    this._interval = setInterval(() => { this._update(); }, 30);
+    this._interval = setInterval(() => { this._update(); }, 25);
     this.renderEngine.render();
   }
 
@@ -46,7 +47,13 @@ class Animation {
     this.renderEngine.clouds = this.clouds;
   }
 
+  _updateTime () {
+    this.time += 0.025;
+  }
+
   _update () {
+    this._updateTime();
+
     this._createClouds();
     this.clouds.forEach(cloud => {
       cloud.update();
