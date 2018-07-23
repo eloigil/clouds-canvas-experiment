@@ -33,7 +33,11 @@ class RenderEngine {
 
   _renderClouds () {
     if (this.clouds.length !== 0) {
-      this._renderCloud(this.clouds[0]);
+      this.clouds.forEach((cloudLine) => {
+        cloudLine.forEach((cloud) => {
+          this._renderCloud(cloud);
+        });
+      });
     }
   }
   _renderCloud (cloud) {
