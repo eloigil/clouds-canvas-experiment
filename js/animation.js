@@ -19,13 +19,14 @@ class Animation {
 
   _start () {
     this._createFloor();
-    this._update();
+    this._interval = setInterval(() => this._update());
     this.renderEngine.render();
   }
 
   _createFloor () {
     this.floor = {
-      y: this.horizon
+      y: this.horizon,
+      color: '#a9f27b'
     };
 
     this.renderEngine.floor = this.floor;
