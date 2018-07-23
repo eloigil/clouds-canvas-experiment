@@ -44,9 +44,12 @@ class RenderEngine {
   _renderCloud (cloud) {
     const radius = cloud.radius * (cloud.position.z / 100);
 
+    const yAlpha = Math.atan((this.horizon.y - cloud.position.y) / this.maxZ);
+    const y = this.horizon.y - (Math.tan(yAlpha) * cloud.position.z);
+
     this.ctx.save();
     this.ctx.beginPath();
-    this.ctx.arc(cloud.position.x, cloud.position.y, radius, 0, 2 * Math.PI);
+    this.ctx.arc(cloud.position.x, y, radius, 0, 2 * Math.PI);
     this.ctx.strokeStyle = '#fff';
     this.ctx.globalAlpha = 0.8;
     this.ctx.lineWidth = 2;

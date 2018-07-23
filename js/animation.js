@@ -14,7 +14,7 @@ class Animation {
     this.maxZ = 100;
 
     this.floor = null;
-    this.clouds = [[]];
+    this.clouds = [[], [], []];
 
     this.renderEngine = new RenderEngine(this.ctx, this.width, this.height, this.horizon, this.maxZ);
 
@@ -40,11 +40,12 @@ class Animation {
 
   _createClouds () {
     // @TODO create 5 clouds for different z levels
-    if (this.clouds[0].length < 10 && this.time % 1000 === 0) {
-      const z = 100;
-      this.clouds[0].push(new Cloud(this.width, this.height, z));
-      console.log('added clouds');
-      this.renderEngine.clouds = this.clouds;
+    for (let ix = 0; ix < 3; ix++) {
+      if (this.clouds[ix].length < 10 && this.time % 1000 === 0) {
+        const z = 100 - ix * 20;
+        this.clouds[0].push(new Cloud(this.width, this.height, z));
+        this.renderEngine.clouds = this.clouds;
+      }
     }
   }
 

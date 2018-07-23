@@ -18,7 +18,6 @@ class Cloud {
   }
 
   checkIfEnded () {
-    console.log(this.position.x <= 0 - this.radius);
     return (this.position.x <= 0 - this.radius);
   }
 }
