@@ -4,7 +4,7 @@ class Cloud {
   constructor (canvasWidth, canvasHeight, z) {
     this.radius = canvasHeight / 10;
     this.position = {
-      x: canvasWidth + this.radius,
+      x: canvasWidth + this.radius + (canvasWidth / (z / 100)),
       y: canvasHeight * 0.2,
       z: z
     };
@@ -16,7 +16,7 @@ class Cloud {
   update () {
     this.position.x += this.speed;
 
-    this.position.y += Math.sin(RADIANS(this.animationAngle)) * 2;
+    this.position.y += Math.sin(RADIANS(this.animationAngle)) * 1;
     this.animationAngle += 5;
   }
 

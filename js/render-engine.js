@@ -47,14 +47,18 @@ class RenderEngine {
     const yAlpha = Math.atan((this.horizon.y - cloud.position.y) / this.maxZ);
     const y = this.horizon.y - (Math.tan(yAlpha) * cloud.position.z);
 
+    const xFactor = cloud.position.z / this.maxZ;
+
+    const color = 155 + cloud.position.z;
+
     this.ctx.save();
     this.ctx.beginPath();
-    this.ctx.arc(cloud.position.x, y, radius, 0, 2 * Math.PI);
+    this.ctx.arc(cloud.position.x * xFactor, y, radius, 0, 2 * Math.PI);
     this.ctx.strokeStyle = '#fff';
     this.ctx.globalAlpha = 0.8;
     this.ctx.lineWidth = 2;
     this.ctx.stroke();
-    this.ctx.fillStyle = '#fff';
+    this.ctx.fillStyle = `rgb(${color},${187 * cloud.position.z / 100},218)`;
     this.ctx.globalAlpha = 0.4;
     this.ctx.fill();
     this.ctx.restore();

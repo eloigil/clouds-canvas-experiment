@@ -40,9 +40,9 @@ class Animation {
 
   _createClouds () {
     for (let ix = 0; ix < 3; ix++) {
-      if (this.clouds[ix].length < 10 && this.time % 1000 === 0) {
-        const z = 100 - ix * 20;
-        this.clouds[0].push(new Cloud(this.width, this.height, z));
+      if (this.clouds[ix].length < 15 && this.time % 1000 === 0) {
+        const z = 100 - ix * 30;
+        this.clouds[ix].push(new Cloud(this.width, this.height, z));
         this.renderEngine.clouds = this.clouds;
       }
     }
